@@ -1,3 +1,5 @@
+#include <Arduino.h>
+
 // We communicate, by default, with the power board at 9200 baud.
 void setup() {
   Serial.begin(9600);
