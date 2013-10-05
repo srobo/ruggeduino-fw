@@ -1,8 +1,10 @@
 #include <Arduino.h>
 
+#define SERIAL_BAUD 115200
+
 // We communicate, by default, with the power board at 9200 baud.
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(SERIAL_BAUD);
 }
 
 /* Read a pin ID from the serial port and return it.
