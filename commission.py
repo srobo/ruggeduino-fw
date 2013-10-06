@@ -14,3 +14,4 @@ while True:
     serial = get_serial()
     subprocess.call(["make", "flash"])
     serial_file.write("{0},{1}\n".format(part_number.upper(), serial))
+    serial_file.flush()
