@@ -7,15 +7,10 @@ void setup() {
   Serial.begin(SERIAL_BAUD);
 }
 
-/* Read a pin ID from the serial port and return it.
-   We use readBytes here for the blocking semantics - a loop going by without
-   a command is fine so we use read() there, but here we need to wait until
-   the pin is received. */
 int read_pin() {
-  char inputByte;
-  Serial.readBytes(&inputByte, 1);
-  // Because pin 0 is encoded to the byte 0 and so on, we can just upcast
-  return (int)(inputByte - 'a');
+  while (!Serial.available());
+  int pin = Serial.read();
+  return (int)(pin - 'a');
 }
 
 void command_read() {
@@ -28,6 +23,12 @@ void command_read() {
   } else {
     Serial.write('l');
   }
+}
+
+void command_analogue_read() {
+  int pin = read_pin();
+  int value = analogRead(pin);
+  Serial.print(value);
 }
 
 void command_write(int level) {
@@ -46,6 +47,9 @@ void loop() {
     int selected_command = Serial.read();
     // Do something different based on what we got:
     switch (selected_command) {
+      case 'a':
+        command_analogue_read();
+        break;
       case 'r':
         command_read();
         break;
@@ -64,15 +68,15 @@ void loop() {
       case 'p':
         command_mode(INPUT_PULLUP);
         break;
-      case 'a':
-        Serial.print("Hello");
+      case 'v':
+        Serial.print("SRduino:");
+        Serial.print(FW_VER);
         break;
       default:
         // A problem here: we do not know how to handle the command!
         // Just ignore this for now.
         break;
     }
+    Serial.print("\n");
   }
-  // Pause briefly
-  delay(1);
 }
