@@ -1,8 +1,10 @@
 #include <Arduino.h>
 
+// Arduino default baud is 9600, but the SR kit uses 115200
+// If you change this, you'll also need to change the value in the
+// sr-robot API layer (in ruggeduino.py)
 #define SERIAL_BAUD 115200
 
-// We communicate, by default, with the power board at 9200 baud.
 void setup() {
   Serial.begin(SERIAL_BAUD);
 }
