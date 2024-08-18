@@ -1,4 +1,4 @@
-FW_VER=1
+FW_VER=2
 DEV=/dev/ttyACM0
 
 CC=avr-gcc
