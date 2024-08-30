@@ -1,5 +1,7 @@
 #include <Arduino.h>
 
+#define FW_VER 2
+
 // NB: If you make any changes to this file, then the sample source for
 // teams to extend in srweb (resources/kit/ruggeduino-fw.ino) will also
 // need changing similarly (though there are some intentional differences)
