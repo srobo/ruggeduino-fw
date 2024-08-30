@@ -11,3 +11,4 @@ jobs:
           fqbn: "arduino:avr:uno"
           sketch-paths: |
             - src
+            - ruggeduino_test
