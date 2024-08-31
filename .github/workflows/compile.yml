@@ -1,0 +1,14 @@
+on:
+  - push
+  - pull_request
+jobs:
+  compile-sketch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: arduino/compile-sketches@v1
+        with:
+          fqbn: "arduino:avr:uno"
+          sketch-paths: |
+            - src
+            - ruggeduino_test
