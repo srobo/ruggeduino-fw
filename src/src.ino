@@ -35,7 +35,7 @@ void command_read() {
   }
 }
 
-void command_analogue_read() {
+void command_analog_read() {
   int pin = read_pin();
   int value = analogRead(pin);
   Serial.print(value);
@@ -85,7 +85,7 @@ void loop() {
     // Do something different based on what we got:
     switch (selected_command) {
       case 'a':
-        command_analogue_read();
+        command_analog_read();
         break;
       case 'r':
         command_read();
