@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-#define FW_VER 2
+#define FW_VER 3
 
 // NB: If you make any changes to this file, then the sample source for
 // teams to extend in srweb (resources/kit/ruggeduino-fw.ino) will also
@@ -67,7 +67,7 @@ void command_ultrasound() {
   digitalWrite(pulse, LOW);
 
   // measure the echo time on the echo pin
-  int duration = pulseIn(echo, HIGH, 60000);
+  long duration = pulseIn(echo, HIGH, 60000);
   Serial.print(microsecondsToMm(duration));
 }
 
